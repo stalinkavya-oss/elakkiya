@@ -1,0 +1,48 @@
+{% extends "planner_base.html" %}
+{% block heading %}Find jewelry that fits the occasion and budget.{% endblock %}
+{% block intro %}Add an outfit image if you want visual color/style analysis.{% endblock %}
+
+{% block form %}
+<form id="planner-form" enctype="multipart/form-data">
+<label>Budget (₹)
+<input name="budget" type="number" min="1" required>
+</label>
+
+<label>Occasion
+<select name="occasion">
+<option>wedding</option>
+<option>reception</option>
+<option>festival</option>
+<option>party</option>
+<option>daily</option>
+</select>
+</label>
+
+<label>Style
+<select name="style">
+<option>traditional</option>
+<option>modern</option>
+<option>minimal</option>
+<option>statement</option>
+</select>
+</label>
+
+<label>Outfit color
+<input name="outfit_color" placeholder="e.g. teal blue">
+</label>
+
+<label>Outfit image (optional)
+<input name="outfit" type="file" accept="image/png,image/jpeg,image/webp">
+</label>
+
+<label>Notes
+<textarea name="notes"></textarea>
+</label>
+
+<button class="btn">Generate plan</button>
+</form>
+
+<script>
+window.plannerConfig = {url: "/api/generate-jewelry", type: "jewelry"};
+</script>
+{% endblock %}
